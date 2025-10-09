@@ -4,6 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 
 % Use Unipd as theme, with options:
 % - pageofpages: define the separation symbol of the footer page of pages (e.g.: of, di, /, default: of)
@@ -33,48 +35,65 @@
 % Make the title page
 \frame{\titlepage}
 
-\section{First section}
 
-    \begin{frame}{First section}
-        In this slide, some important text will be
-        \alert{highlighted} because it's important.
-        Here an ordered list:
-        \begin{enumerate}
-            \item First item
-            \item Second item
-        \end{enumerate}
-        Here an unordered list: 
-        \begin{itemize}
-            \item One item
-            \item Another item
-        \end{itemize}
-    \end{frame}
+\input{sections/NS-Simplified.tex}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXEMPLE SLIDES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{First section}
+
+%     \begin{frame}{First section}
+%         In this slide, some important text will be
+%         \alert{highlighted} because it's important.
+%         Here an ordered list:
+%         \begin{enumerate}
+%             \item First item
+%             \item Second item
+%         \end{enumerate}
+%         Here an unordered list: 
+%         \begin{itemize}
+%             \item One item
+%             \item Another item
+%         \end{itemize}
+%     \end{frame}
     
-\section{Second section}
+% \section{Second section}
 
-    \begin{frame}{Second section}
-        \begin{block}{Block}
-            Sample text in a normal block
-        \end{block}
+%     \begin{frame}{Second section}
+%         \begin{block}{Block}
+%             Sample text in a normal block
+%         \end{block}
    
-        \begin{alertblock}{Alert block}
-            Sample text in an alert block
-        \end{alertblock}    
+%         \begin{alertblock}{Alert block}
+%             Sample text in an alert block
+%         \end{alertblock}    
         
-         \begin{example}
-            Sample text for an example
-        \end{example}
-    \end{frame}
+%          \begin{example}
+%             Sample text for an example
+%         \end{example}
+%     \end{frame}
 
     
-    \begin{emptyframe}
-        Thank you!
-    \end{emptyframe}
+%     \begin{emptyframe}
+%         Thank you!
+%     \end{emptyframe}
 
-    \appendix
+%     \appendix
 
-    \begin{frame}{Backup slide}
-        Some additional content
-    \end{frame}
+%     \begin{frame}{Backup slide}
+%         Some additional content
+%     \end{frame}
     
 \end{document}

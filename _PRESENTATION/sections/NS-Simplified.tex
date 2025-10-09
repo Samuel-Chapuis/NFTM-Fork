@@ -1,0 +1,143 @@
+\section{From Navier--Stokes to Simplified PDEs}
+
+% ===== Slide 1 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Navier--Stokes (2D, incompressible)}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equation}
+\[
+\begin{cases}
+\dfrac{\partial \mathbf{u}}{\partial t} 
++ (\mathbf{u}\!\cdot\!\nabla)\mathbf{u}
+= -\nabla p + \nu\nabla^2 \mathbf{u},\\[4pt]
+\nabla\!\cdot\!\mathbf{u} = 0
+\end{cases}
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Hypotheses}
+Incompressible: \(\nabla\!\cdot\!\mathbf{u} = 0\). \quad
+Viscous: \(\nu>0\). \quad
+Free pressure: \(p(x,y,t)\).
+\end{block}
+\end{frame}
+
+
+% ===== Slide 2 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Euler (Inviscid Fluid)}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equation}
+\[
+\dfrac{\partial \mathbf{u}}{\partial t} 
++ (\mathbf{u}\!\cdot\!\nabla)\mathbf{u}
+= -\nabla p
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Hypotheses}
+No viscosity: \(\nu = 0\). \quad
+(Optional) Incompressible: \(\nabla\!\cdot\!\mathbf{u}=0\).
+\end{block}
+\end{frame}
+
+
+% ===== Slide 3 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Burgers (1D Advection–Diffusion)}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equation}
+\[
+\dfrac{\partial u}{\partial t} + u\dfrac{\partial u}{\partial x}
+= \nu\dfrac{\partial^2 u}{\partial x^2}
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Hypotheses}
+\(\nabla p=\mathbf{0}\). \quad
+1D reduction: \(\mathbf{u}=(u(x,t),0)\). \quad
+Self-advection: \(u\,\partial_x u\).
+\end{block}
+\end{frame}
+
+
+% ===== Slide 4 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Heat / Diffusion Equation}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equation}
+\[
+\dfrac{\partial u}{\partial t} =
+\alpha\,\dfrac{\partial^2 u}{\partial x^2}
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Hypotheses}
+No convection: \(u\,\partial_x u = 0\). \quad
+Pure diffusion: \(\alpha>0\).
+\end{block}
+\end{frame}
+
+
+% ===== Slide 5 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Darcy (Steady, Elliptic Form)}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equation}
+\[
+\nabla\!\cdot\!\big(a(x)\nabla u(x)\big) = f(x)
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Hypotheses}
+Steady regime: \(\partial_t u = 0\). \quad
+Heterogeneous medium: \(a(x)>0\). \quad
+Source/sink: \(f(x)\).
+\end{block}
+\end{frame}
+
+
+
+% ===== Slide 6 =====
+\begin{frame}{Navier Stokes to Simplified PDEs}
+\small
+\textcolor{red_unipd}{\Large Summary of Relationships}
+
+\centering
+\begin{tikzpicture}[node distance=1.3cm, every node/.style={align=center, font=\small}]
+\node (NS) [draw, rounded corners, fill=blue!10, text width=3.2cm] {Navier--Stokes \\ \(\nabla\!\cdot\!\mathbf{u}=0,\ \nu>0\)};
+\node (E) [draw, rounded corners, below=of NS, fill=blue!5, text width=3.2cm] {Euler \\ \(\nu=0\)};
+\node (B) [draw, rounded corners, below=of E, fill=blue!5, text width=3.2cm] {Burgers (1D) \\ \(\nabla p=\mathbf{0}\)};
+\node (H) [draw, rounded corners, below=of B, fill=blue!5, text width=3.2cm] {Heat \\ \(u\partial_x u=0\)};
+\node (D) [draw, rounded corners, right=3.0cm of B, fill=blue!5, text width=3.2cm] {Darcy \\ \(\partial_t=0\)};
+\draw[->, thick] (NS) -- (E);
+\draw[->, thick] (E) -- (B);
+\draw[->, thick] (B) -- (H);
+\draw[->, thick, dashed] (NS) -| (D);
+\end{tikzpicture}
+\end{frame}
