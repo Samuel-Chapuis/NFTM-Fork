@@ -25,6 +25,13 @@ Incompressible: \(\nabla\!\cdot\!\mathbf{u} = 0\). \quad
 Viscous: \(\nu>0\). \quad
 Free pressure: \(p(x,y,t)\).
 \end{block}
+
+\vspace{0.5em}
+\textit{Used in:}  
+– PINN (Raissi et al., 2017)  
+– FNO (Li et al., 2020)  
+– NFTM (Malhotra \& Seghouani, 2025)  
+– PDEBench: compressible \& incompressible Navier–Stokes datasets
 \end{frame}
 
 
@@ -49,6 +56,11 @@ Free pressure: \(p(x,y,t)\).
 No viscosity: \(\nu = 0\). \quad
 (Optional) Incompressible: \(\nabla\!\cdot\!\mathbf{u}=0\).
 \end{block}
+
+\vspace{0.5em}
+\textit{Used in:}  
+– Mentioned in NFTM discussions (Malhotra, 2025)  
+– Not directly used in PINN/FNO/PDEBench (unstable formulation)
 \end{frame}
 
 
@@ -73,6 +85,13 @@ No viscosity: \(\nu = 0\). \quad
 1D reduction: \(\mathbf{u}=(u(x,t),0)\). \quad
 Self-advection: \(u\,\partial_x u\).
 \end{block}
+
+\vspace{0.5em}
+\textit{Used in:}  
+– PINN (Raissi et al., 2017) — canonical nonlinear PDE example  
+– FNO (Li et al., 2020) — 1D Burgers dataset (autoregressive rollout)  
+– NFTM — simplified dynamic for iterative refinement  
+– PDEBench \& NeuralOperator Burgers datasets
 \end{frame}
 
 
@@ -96,6 +115,12 @@ Self-advection: \(u\,\partial_x u\).
 No convection: \(u\,\partial_x u = 0\). \quad
 Pure diffusion: \(\alpha>0\).
 \end{block}
+
+\vspace{0.5em}
+\textit{Used in:}  
+– NFTM GitHub repository (“heat equation” baseline)  
+– PDEBench diffusion/heat datasets  
+– Used to test backtracking, teacher forcing, and refinement stability
 \end{frame}
 
 
@@ -119,25 +144,61 @@ Steady regime: \(\partial_t u = 0\). \quad
 Heterogeneous medium: \(a(x)>0\). \quad
 Source/sink: \(f(x)\).
 \end{block}
+
+\vspace{0.5em}
+\textit{Used in:}  
+– PINN (Raissi et al., 2017) — steady-state diffusion problem  
+– FNO (Li et al., 2020) — 2D Darcy dataset in NeuralOperator  
+– PDEBench Darcy flow benchmark  
+– Tested under hybrid and data-driven regimes
 \end{frame}
 
 
-
-% ===== Slide 6 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{frame}{Simplification Path of Fluid Dynamics Equations}
 \small
-\textcolor{red_unipd}{\Large Summary of Relationships}
+\textcolor{red_unipd}{\Large From Navier--Stokes to Simplified Models}
 
+\medskip
 \centering
-\begin{tikzpicture}[node distance=1.3cm, every node/.style={align=center, font=\small}]
-\node (NS) [draw, rounded corners, fill=blue!10, text width=3.2cm] {Navier--Stokes \\ \(\nabla\!\cdot\!\mathbf{u}=0,\ \nu>0\)};
-\node (E) [draw, rounded corners, below=of NS, fill=blue!5, text width=3.2cm] {Euler \\ \(\nu=0\)};
-\node (B) [draw, rounded corners, below=of E, fill=blue!5, text width=3.2cm] {Burgers (1D) \\ \(\nabla p=\mathbf{0}\)};
-\node (H) [draw, rounded corners, below=of B, fill=blue!5, text width=3.2cm] {Heat \\ \(u\partial_x u=0\)};
-\node (D) [draw, rounded corners, right=3.0cm of B, fill=blue!5, text width=3.2cm] {Darcy \\ \(\partial_t=0\)};
-\draw[->, thick] (NS) -- (E);
-\draw[->, thick] (E) -- (B);
-\draw[->, thick] (B) -- (H);
-\draw[->, thick, dashed] (NS) -| (D);
-\end{tikzpicture}
+\resizebox{.95\linewidth}{!}{%
+\begin{tikzpicture}[
+  >=latex,
+  box/.style={draw,rounded corners,thick,minimum width=3.4cm,minimum height=0.95cm,align=center},
+  every node/.style={font=\small}
+]
+% --- Nodes ---
+\node[box,fill=blue!20,font=\bfseries] (NS) at (0,0) {Navier--Stokes};
+
+% left vertical chain
+\node[box,fill=blue!10] (E)   at (-4.2,-2.2) {Euler\\(compressible)};
+\node[box,fill=blue!10] (EI)  at (-4.2,-4.6) {Euler incompressible};
+\node[box,fill=blue!5]  (B)   at (-4.2,-7.0) {Burgers};
+\node[box,fill=blue!5]  (H)   at (-4.2,-9.4) {Heat eq.};
+
+% right branch
+\node[box,fill=blue!10,minimum width=4.4cm] (NSi) at (4.2,-1.6) {N.S.\ incompressible};
+\node[box,fill=blue!5] (D)    at (8.2,-7.0) {Darcy};
+
+% --- Arrows: H then V only ---
+% NS -> Euler
+\draw[->,thick] (NS.west) -- (E.north |- NS.west) -- (E.north);
+% Euler vertical chain
+\draw[->,thick] (E)  -- (EI);
+\draw[->,thick] (EI) -- (B);
+\draw[->,thick] (B)  -- (H);
+% NS -> N.S. incompressible
+\draw[->,thick] (NS.east) -- (NSi.north |- NS.east) -- (NSi.north);
+% N.S. incompressible -> Euler incompressible
+\draw[->,thick] (NSi.south) -- (EI.east |- NSi.south) -- (EI.east);
+% NS -> Darcy
+\draw[->,thick] (NS.east) -- (D.north |- NS.east) -- (D.north);
+
+\end{tikzpicture}%
+}
 \end{frame}
+
+
+
+
+
+

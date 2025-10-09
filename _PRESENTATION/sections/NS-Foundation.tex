@@ -1,0 +1,246 @@
+\section{Foundations: The Navier--Stokes Equations}
+
+% ===== Slide 1 =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+% \textcolor{red_unipd}{\Large Neural PDE Modeling and Navier--Stokes Foundations}
+
+\vspace{0.6em}
+
+\begin{block}{Context}
+The three main neural architectures studied in this project —  
+\textbf{PINNs} (Raissi et al., 2017), \textbf{FNOs} (Li et al., 2020),  
+and \textbf{NFTM} (Malhotra \& Seghouani, 2025) —  
+all aim to approximate or emulate the behavior of \textbf{partial differential equations (PDEs)} derived from the \textbf{Navier–Stokes equations}.  
+
+They differ in how they integrate physics:
+\begin{itemize}
+  \item \textbf{PINNs:} enforce the PDE directly in the loss function (physics-informed training);
+  \item \textbf{FNOs:} learn an operator mapping between states of the PDE in Fourier space;
+  \item \textbf{NFTM:} iteratively refines a learned physical field through neural “heads” and a controller.
+\end{itemize}
+All three trace back to the same physical foundation — the dynamics of fluids governed by Navier–Stokes.
+\end{block}
+\end{frame}
+
+
+
+
+% ===== Slide 2 (Full Navier–Stokes) =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large General Form of Navier--Stokes Equations}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equations}
+\[
+\begin{cases}
+\dfrac{\partial \rho}{\partial t}
++ \nabla\!\cdot\!(\rho \mathbf{u}) = 0,\\[16pt]
+
+\dfrac{\partial (\rho \mathbf{u})}{\partial t}
++ \nabla\!\cdot\!(\rho \mathbf{u} \otimes \mathbf{u})
+= -\nabla p + \nabla\!\cdot\!\boldsymbol{\Sigma} + \rho \mathbf{g},\\[16pt]
+
+\dfrac{\partial E}{\partial t}
++ \nabla\!\cdot\!((E+p)\mathbf{u})
+= \nabla\!\cdot\!(\boldsymbol{\tau}\!\cdot\!\mathbf{u})
+- \nabla\!\cdot\!\mathbf{q} + \rho \mathbf{u}\!\cdot\!\mathbf{g}
+\end{cases}
+\]
+\end{alertblock}
+
+\end{frame}
+
+
+
+
+% ===== New Slide 3: Physical Meaning -- Mass Conservation =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large Conservation Laws: Mass}
+
+\vspace{0.8em}
+
+\begin{alertblock}{Continuity equation -- Mass Conservation}
+\[
+\dfrac{\partial \rho}{\partial t} + \nabla\!\cdot\!(\rho \mathbf{u}) = 0
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Term definitions}
+\begin{itemize}
+  \item \(\rho\): fluid density \([\text{kg·m}^{-3}]\)
+  \item \(\mathbf{u} = (u,v,w)\): velocity field \([\text{m·s}^{-1}]\)
+  \item \(\nabla\!\cdot\!(\rho \mathbf{u})\): divergence of mass flux
+  \item \(\partial \rho / \partial t\): local time rate of change of density
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+% ===== Slide 4: Physical Meaning -- Momentum Conservation =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large Conservation Laws: Momentum}
+
+\vspace{0.8em}
+
+\begin{alertblock}{Newton’s second law -- Momentum equation}
+\[
+\dfrac{\partial (\rho \mathbf{u})}{\partial t}
++ \nabla\!\cdot\!(\rho \mathbf{u}\otimes\mathbf{u})
+= -\nabla p + \nabla\!\cdot\!\boldsymbol{\Sigma} + \rho \mathbf{g}
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Term definitions}
+\begin{itemize}
+  \item \(\rho \mathbf{u}\): momentum density \([\text{kg·m}^{-2}\text{·s}^{-1}]\)
+  \item \(\nabla\!\cdot\!(\rho \mathbf{u}\otimes\mathbf{u})\): convective momentum transport
+  \item \(-\nabla p\): pressure gradient force per unit volume
+  \item \(\boldsymbol{\Sigma}\): viscous stress tensor \([\text{Pa}]\)
+  \item \(\rho \mathbf{g}\): body force density (e.g. gravity) \([\text{N·m}^{-3}]\)
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+% ===== Slide 5: Physical Meaning -- Energy Conservation =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large Conservation Laws: Energy}
+
+\vspace{0.8em}
+
+\begin{alertblock}{Energy equation (first law of thermodynamics)}
+\[
+\dfrac{\partial E}{\partial t}
++ \nabla\!\cdot\!((E+p)\mathbf{u})
+= \nabla\!\cdot\!(\boldsymbol{\tau}\!\cdot\!\mathbf{u})
+- \nabla\!\cdot\!\mathbf{q}
++ \rho \mathbf{u}\!\cdot\!\mathbf{g}
+\]
+\end{alertblock}
+
+\vfill
+
+\begin{block}{Term definitions}
+\begin{itemize}
+  \item \(E = \rho\!\left(e + \tfrac{1}{2}|\mathbf{u}|^2\right)\): total energy density (internal + kinetic)
+  \item \(p\): pressure \([\text{Pa}]\)
+  \item \(\boldsymbol{\tau}\): stress tensor (viscous + pressure)
+  \item \(\mathbf{q}\): heat flux vector \([\text{W·m}^{-2}]\)
+  \item \(\rho \mathbf{u}\!\cdot\!\mathbf{g}\): work done by body forces
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+% ===== Slide 6 =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large Newtonian Hypotheses and Constitutive Relations}
+
+\begin{alertblock}{Viscous Stress}
+\[
+\begin{cases}
+\boldsymbol{\Sigma} = \mu\left(\nabla \mathbf{u} + (\nabla \mathbf{u})^T\right) + \lambda (\nabla\!\cdot\!\mathbf{u}) \mathbf{I},\\[4pt]
+\boldsymbol{\tau} = \boldsymbol{\Sigma} - p \mathbf{I}
+\end{cases}
+\]
+\end{alertblock}
+
+\begin{alertblock}{Heat Flux}
+\[
+\mathbf{q} = -k \nabla T
+\]
+\end{alertblock}
+
+\begin{alertblock}{Internal Energy}
+\[
+E = \rho\left(e + \dfrac{1}{2}|\mathbf{u}|^2\right)
+\]
+\end{alertblock}
+
+\end{frame}
+
+
+
+
+% ===== Slide 7 (Navier–Stokes with Constitutive Relations Expanded) =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large General Form with Constitutive Relations Expanded}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Equations (Newtonian, compressible, viscous fluid)}
+\[
+\begin{cases}
+\dfrac{\partial \rho}{\partial t}
++ \nabla\!\cdot\!(\rho \mathbf{u}) = 0,\\[16pt]
+
+\rho\!\left(
+\dfrac{\partial \mathbf{u}}{\partial t}
++ (\mathbf{u}\!\cdot\!\nabla)\mathbf{u}
+\right)
+= -\nabla p
++ \nabla\!\cdot\!\Big[
+\mu\!\left(\nabla \mathbf{u} + (\nabla \mathbf{u})^T\right)
++ \lambda (\nabla\!\cdot\!\mathbf{u})\mathbf{I}
+\Big]
++ \rho \mathbf{g},\\[20pt]
+
+\dfrac{\partial }{\partial t}\!
+\left[\rho\!\left(e + \dfrac{1}{2}|\mathbf{u}|^2\right)\right]
++ \nabla\!\cdot\!
+\left[\rho\!\left(e + \dfrac{1}{2}|\mathbf{u}|^2\right)\mathbf{u} + p\mathbf{u}\right]
+= \\ \nabla\!\cdot\!
+\Big\{
+\mu\!\left(\nabla \mathbf{u} + (\nabla \mathbf{u})^T\right)\!\cdot\!\mathbf{u}
++ \lambda (\nabla\!\cdot\!\mathbf{u})\mathbf{u}
+- k\nabla T
+\Big\}
++ \rho \mathbf{u}\!\cdot\!\mathbf{g}
+\end{cases}
+\]
+\end{alertblock}
+
+\end{frame}
+
+
+
+
+% ===== Slide 8 =====
+\begin{frame}{The Navier--Stokes Equations}
+\small
+\textcolor{red_unipd}{\Large Why Navier--Stokes Matters in Neural PDEs}
+
+\vspace{0.6em}
+
+\begin{block}{Central role in neural modeling}
+The Navier--Stokes system unifies diffusion (viscous term),  
+advection (nonlinear term), and incompressibility (constraint).  
+Each paper tests neural architectures by simplifying or approximating parts of this system:
+\begin{itemize}
+  \item \textbf{PINNs:} direct enforcement of differential operators;
+  \item \textbf{FNOs:} operator learning across time steps of Navier–Stokes;
+  \item \textbf{NFTM:} learned iterative refinement mimicking PDE rollouts.
+\end{itemize}
+\vspace{0.4em}
+Through these methods, the goal is to determine whether deep neural architectures can reproduce  
+\textit{the stability and accuracy of physical solvers} for complex spatio-temporal dynamics.
+\end{block}
+\end{frame}
