@@ -1,0 +1,49 @@
+\mode<presentation>
+
+%% Define option for the separation symbol of the footer page of pages (default: "of")
+\def \beamer@unipd@pageofpages{of}
+\DeclareOptionBeamer{pageofpages}{\def \beamer@unipd@pageofpages{#1}}
+\ExecuteOptionsBeamer{pageofpages=of}
+\ProcessOptionsBeamer
+
+%% Define the frametitle with logo
+\defbeamertemplate*{frametitle}{pres theme}{%
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\paperwidth,ht=5.5ex]{frametitle}
+        \hspace*{1ex}
+        \begin{minipage}[c][2ex][c]{0.65\paperwidth}
+            \raggedright
+            \usebeamerfont{frametitle}
+            \insertframetitle 
+        \end{minipage}
+        \vspace{1.8ex}
+    \end{beamercolorbox}
+    \begin{textblock*}{0.33\paperwidth}(\paperwidth-4cm, -5ex)
+        \includegraphics[height=4.5ex]{logo.png}
+    \end{textblock*}
+}
+
+%% Define the footer with author, presentation title and page of pages
+\defbeamertemplate*{footline}{pres theme}{%
+    \ifnum\c@framenumber>1
+        \leavevmode%
+        \hbox{%
+            \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{frametitle}%
+                \usebeamerfont{footer font}\insertshortauthor
+            \end{beamercolorbox}%
+            \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{frametitle}%
+                \usebeamerfont{footer font}\insertshorttitle
+            \end{beamercolorbox}%
+            \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{frametitle}%
+                \usebeamerfont{footer font}\insertframenumber{} \beamer@unipd@pageofpages{} \inserttotalframenumber
+            \end{beamercolorbox}%
+        }%
+        \vskip0cm%
+    \fi
+}
+
+%% Disable navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\mode
+<all>

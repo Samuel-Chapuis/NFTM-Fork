@@ -1,0 +1,80 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+
+% Use Unipd as theme, with options:
+% - pageofpages: define the separation symbol of the footer page of pages (e.g.: of, di, /, default: of)
+% - logo: position another logo near the Unipd logo in the title page (e.g. department logo), passing the second logo path as option 
+% Use the environment lastframe to add the endframe text
+\usetheme[pageofpages=of]{Unipd}
+
+\title{I - Neural Turing Machines}
+\subtitle{Application to physical simulations}
+\author[Lucia Fernandez Sanchez, Alexandra Perruchot-Triboulet Rodriguez, Samuel Chapuis]{L.~Fernandez Sanchez \and A.~Perruchot-Triboulet Rodriguez \and S.~Chapuis}
+
+\date{\today}
+
+% The next block of commands puts the table of contents at the beginning of each section and highlights the current section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+
+\begin{document}
+
+% Make the title page
+\frame{\titlepage}
+
+\section{First section}
+
+    \begin{frame}{First section}
+        In this slide, some important text will be
+        \alert{highlighted} because it's important.
+        Here an ordered list:
+        \begin{enumerate}
+            \item First item
+            \item Second item
+        \end{enumerate}
+        Here an unordered list: 
+        \begin{itemize}
+            \item One item
+            \item Another item
+        \end{itemize}
+    \end{frame}
+    
+\section{Second section}
+
+    \begin{frame}{Second section}
+        \begin{block}{Block}
+            Sample text in a normal block
+        \end{block}
+   
+        \begin{alertblock}{Alert block}
+            Sample text in an alert block
+        \end{alertblock}    
+        
+         \begin{example}
+            Sample text for an example
+        \end{example}
+    \end{frame}
+
+    
+    \begin{emptyframe}
+        Thank you!
+    \end{emptyframe}
+
+    \appendix
+
+    \begin{frame}{Backup slide}
+        Some additional content
+    \end{frame}
+    
+\end{document}

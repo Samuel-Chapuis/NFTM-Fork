@@ -1,0 +1,43 @@
+# LaTeX intermediate / build artifacts
+*.aux
+*.bbl
+*.blg
+*.brf
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.ilg
+*.ind
+*.idx
+*.lof
+*.lot
+*.lot
+*.brf
+
+# Build folders
+_build/
+build/
+dist/
+latex-out/
+generated/
+
+# Compiled output (uncomment if you want to track PDFs)
+*.pdf
+
+# Editor / IDE / OS files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Misc
+*.eps-converted-to.pdf
+*.synctex.gz
