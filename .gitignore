@@ -62,6 +62,9 @@ metrics.json
 *.csv
 *.log
 *.txt
+# Dependency manifests
+!requirements.txt
+!requirements-*.txt
 
 # Temporary files
 temp/
@@ -109,35 +112,35 @@ site/
 !visualization_learnable_alpha_64.png
 !visualization_variable_64.png
 
-# -----------------------------------------------------------------------------
-# Entries merged from `_PRESENTATION/.gitignore` (LaTeX / presentation artifacts)
-# Added to keep presentation build files and intermediate LaTeX artifacts ignored.
-# -----------------------------------------------------------------------------
-# LaTeX intermediate / build artifacts
+# LaTeX build artifacts
+# Common auxiliary and build files produced by LaTeX engines and tools
 *.aux
 *.bbl
 *.blg
 *.brf
+*.log
 *.out
 *.toc
+*.lot
+*.lof
+*.fls
+*.fdb_latexmk
+*.synctex.gz
 *.nav
 *.snm
-*.synctex.gz
+*.vrb
 *.fdb_latexmk
-*.fls
-*.run.xml
+*.gz
+*.idx
 *.ilg
 *.ind
-*.idx
-*.lof
-*.lot
+*.ps
+*.dvi
+*.xdv
+*.synctex
+# latexmk / build dirs
+.latexmk/
+# temporary editor files that may appear during latex editing
+*~
+.latexmain
 
-# Presentation / build folders
-_build/
-build/
-dist/
-latex-out/
-generated/
-
-# Misc presentation artifacts
-*.eps-converted-to.pdf
