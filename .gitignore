@@ -41,13 +41,13 @@ logs/
 runs/
 
 # Generated visualizations and plots (except figures/ for README)
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.pdf
-!figures/
-!figures/**
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.pdf
+# !figures/
+# !figures/**
 
 # Dataset downloads
 data/
