@@ -7,30 +7,87 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
-\title{I - Neural Turing Machines}
-\subtitle{Application to physical simulations}
-\author[Lucia Fernandez Sanchez, Alexandra Perruchot-Triboulet Rodriguez, Samuel Chapuis]{L.~Fernandez Sanchez \and A.~Perruchot-Triboulet Rodriguez \and S.~Chapuis}
-
+\title{Solving the 2D Burgers Equation: Physical Simulation vs NFTM}
+\author{Samuel, Lucía and Alexandra}
 \date{17th October 2025}
 
 % The next block of commands puts the table of contents at the beginning of each section and highlights the current section
-\AtBeginSection[]
-{
-  \begin{frame}
-    \frametitle{Table of Contents}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
+% \AtBeginSection[]
+% {
+%   \begin{frame}
+%     \frametitle{Table of Contents}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
 
 
 
 \begin{document}
 
 % Make the title page
-\frame{\titlepage}
+% \frame{\titlepage}
+
 \begin{frame}
-  hello
+\frametitle{Project Overview}
+\begin{itemize}
+  \item Goal: Compare a physical simulator and a Neural Field Turing Machine (NFTM) for solving the 2D Burgers equation.
+  \item Approach: Build a numerical solver, then train and evaluate NFTM on the same problem.
+\end{itemize}
 \end{frame}
 
-    
+
+\begin{frame}
+\frametitle{2D Burgers Equation}
+\begin{align*}
+  u_t + u u_x + v u_y &= \nu (u_{xx} + u_{yy}) \\
+  v_t + u v_x + v v_y &= \nu (v_{xx} + v_{yy})
+\end{align*}
+\begin{itemize}
+  \item $u(x, y, t)$, $v(x, y, t)$: velocity components
+  \item $\nu$: viscosity
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Physical System: Numerical Simulation}
+\begin{itemize}
+  \item Implements the PDE directly using finite difference methods.
+  \item Discretizes space and time; updates velocity fields step by step.
+  \item Parameters: grid size, time step, viscosity, initial/boundary conditions.
+  \item Produces ground-truth data for model comparison.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{NFTM: Neural Field Turing Machine}
+\begin{itemize}
+  \item Learns to update field values using neural controllers and local memory patches.
+  \item Trained on data from the physical simulator or existing datasets.
+  \item Can generalize to new initial conditions or parameters.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Datasets}
+\begin{itemize}
+  \item Use existing benchmark datasets for PDEs (if available).
+  \item Generate custom datasets using our physical simulator (varied initial/boundary conditions, parameters).
+  \item Enables robust training and fair comparison of NFTM and physical solver.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Summary \& Next Steps}
+\begin{itemize}
+  \item Build and validate the physical simulator.
+  \item Train NFTM on generated and existing datasets.
+  \item Compare performance, accuracy, and generalization.
+\end{itemize}
+\end{frame}
+
 \end{document}
