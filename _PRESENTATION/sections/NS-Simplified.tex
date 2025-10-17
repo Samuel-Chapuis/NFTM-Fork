@@ -162,7 +162,7 @@ Source/sink: \(f(x)\).
 % left vertical chain
 \node[box,fill=blue!10] (E)   at (-4.2,-2.2) {Euler\\(compressible)};
 \node[box,fill=blue!10] (EI)  at (-4.2,-4.6) {Euler incompressible};
-\node[box,fill=blue!5]  (B)   at (-4.2,-7.0) {Burgers};
+\node[box,fill=red!25]  (B)   at (-4.2,-7.0) {Burgers};
 \node[box,fill=blue!5]  (H)   at (-4.2,-9.4) {Heat eq.};
 
 % right branch
@@ -179,7 +179,7 @@ Source/sink: \(f(x)\).
 % NS -> N.S. incompressible
 \draw[->,thick] (NS.east) -- (NSi.north |- NS.east) -- (NSi.north);
 % N.S. incompressible -> Euler incompressible
-\draw[->,thick] (NSi.south) -- (EI.east |- NSi.south) -- (EI.east);
+\draw[->,thick] (NSi.south) -- (NSi.south |- EI.east) -- (EI.east);
 % NS -> Darcy
 \draw[->,thick] (NS.east) -- (D.north |- NS.east) -- (D.north);
 
