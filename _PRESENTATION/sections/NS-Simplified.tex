@@ -1,7 +1,7 @@
-\section{From Navier--Stokes to Simplified PDEs}
+\section{Simplification of Navier-Stokes}
 
 % ===== Slide 1 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Navier--Stokes (2D, incompressible)}
 
@@ -30,11 +30,11 @@ Free pressure: \(p(x,y,t)\).
 – FNO (Li et al., 2020)  
 – NFTM (Malhotra \& Seghouani, 2025)  
 – PDEBench: compressible \& incompressible Navier–Stokes datasets
-\end{frame}
+\end{secframe}
 
 
 % ===== Slide 2 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Euler (Inviscid Fluid)}
 
@@ -57,11 +57,11 @@ No viscosity: \(\nu = 0\). \quad
 \textit{Used in:}  
 – Mentioned in NFTM discussions (Malhotra, 2025)  
 – Not directly used in PINN/FNO/PDEBench (unstable formulation)
-\end{frame}
+\end{secframe}
 
 
 % ===== Slide 3 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Burgers (1D Advection–Diffusion)}
 
@@ -86,11 +86,11 @@ Self-advection: \(u\,\partial_x u\).
 – FNO (Li et al., 2020) — 1D Burgers dataset (autoregressive rollout)  
 – NFTM — simplified dynamic for iterative refinement  
 – PDEBench \& NeuralOperator Burgers datasets
-\end{frame}
+\end{secframe}
 
 
 % ===== Slide 4 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Heat / Diffusion Equation}
 
@@ -113,11 +113,11 @@ Pure diffusion: \(\alpha>0\).
 – NFTM GitHub repository (“heat equation” baseline)  
 – PDEBench diffusion/heat datasets  
 – Used to test backtracking, teacher forcing, and refinement stability
-\end{frame}
+\end{secframe}
 
 
 % ===== Slide 5 =====
-\begin{frame}{Navier Stokes to Simplified PDEs}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Darcy (Steady, Elliptic Form)}
 
@@ -141,12 +141,12 @@ Source/sink: \(f(x)\).
 – FNO (Li et al., 2020) — 2D Darcy dataset in NeuralOperator  
 – PDEBench Darcy flow benchmark  
 – Tested under hybrid and data-driven regimes
-\end{frame}
+\end{secframe}
 
 
-\begin{frame}{Simplification Path of Fluid Dynamics Equations}
+\begin{secframe}
 \small
-\textcolor{red_unipd}{\Large From Navier--Stokes to Simplified Models}
+\textcolor{red_unipd}{\Large Simplification Path of Fluid Dynamics Equations}
 
 \medskip
 \centering
@@ -185,7 +185,7 @@ Source/sink: \(f(x)\).
 
 \end{tikzpicture}%
 }
-\end{frame}
+\end{secframe}
 
 
 

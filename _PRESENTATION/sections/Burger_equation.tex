@@ -1,6 +1,6 @@
 \section{2D Burgers Equation}
 
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Section Overview}
 
@@ -12,10 +12,10 @@
 \begin{block}{Approach}
 Build a numerical solver, then train and evaluate NFTM on the same problem.
 \end{block}
-\end{frame}
+\end{secframe}
 
 % ===== Slide 1 =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Governing Equations}
 
@@ -44,12 +44,10 @@ Self-advection: \(u\,\partial_x u\).
 $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u_{xx} = \frac{\partial^2 u}{\partial x^2}$, etc.
 \end{block}
 
-% ======================================================================
-
-\end{frame}
+\end{secframe}
 
 % ===== Advection Frame =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Advection}
 
@@ -89,10 +87,10 @@ $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u
 \end{figure}
 
 
-\end{frame}
+\end{secframe}
 
 % ===== Balance Frame =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Pressure gradient}
 
@@ -111,10 +109,10 @@ $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u
 
 
 
-\end{frame}
+\end{secframe}
 
 % ===== Slide 2 =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Numerical Simulation}
 
@@ -136,10 +134,10 @@ $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u
 \end{itemize}
 \end{alertblock}
 
-\end{frame}
+\end{secframe}
 
 % ===== Slide 3 =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Neural Field Turing Machine}
 
@@ -159,11 +157,11 @@ $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u
   \item Generate custom datasets using our physical simulator (varied initial/boundary conditions, parameters).
 \end{itemize}
 \end{block}
-\end{frame}
+\end{secframe}
 
 
 % ===== Slide 5 =====
-\begin{frame}{2D Burgers Equation}
+\begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Summary \& Next Steps}
 
@@ -176,4 +174,4 @@ $u_t = \frac{\partial u}{\partial t}$, $u_x = \frac{\partial u}{\partial x}$, $u
   \item Compare performance, accuracy, and generalization.
 \end{itemize}
 \end{block}
-\end{frame}
+\end{secframe}

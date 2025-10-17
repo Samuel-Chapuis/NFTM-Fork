@@ -7,6 +7,17 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
+% ----------------------------------------
+%  ENVIRONMENT SETUP
+% ----------------------------------------
+
+\newenvironment{secframe}
+  {\begin{frame}{\insertsection}} % ouverture : crée une frame avec le titre de la section courante
+  {\end{frame}} 
+
+% ----------------------------------------
+
+
 % Use Unipd as theme, with options:
 % - pageofpages: define the separation symbol of the footer page of pages (e.g.: of, di, /, default: of)
 % - logo: position another logo near the Unipd logo in the title page (e.g. department logo), passing the second logo path as option 
