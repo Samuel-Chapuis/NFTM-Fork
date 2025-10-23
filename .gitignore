@@ -103,6 +103,7 @@ results_test_alpha_*/
 # Generated documentation
 docs/_build/
 site/
+NFTM_for_Physic/generated
 
 # Keep these specific figures for README display
 !alpha_learning_test.png
