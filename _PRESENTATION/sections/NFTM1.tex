@@ -1,6 +1,6 @@
 \section{NFTM on 1D Thermal Diffusion}
 
-% % ===== Slide 2 (Full Navier–Stokes) =====
+% % ===== Slide 1 =====
 \begin{secframe}
 \small
 \textcolor{red_unipd}{\Large Thermal Model}
@@ -17,7 +17,71 @@
    \end{cases}
 \end{equation*}
 
+\end{alertblock}
+
+\begin{block}{Format}
+    Note that the equation is 1D, therefore, the plot shows a 2D grid (space x time) later on the slides.
+\end{block}
+
+\end{secframe}
+
+
+% ===== Slide 2 =====
+\begin{secframe}
+\small
+\textcolor{red_unipd}{\Large Dataset Preparation}
+
+\vspace{0.6em}
+
+\begin{alertblock}{Boundary Conditions}
+\[
+d^2u/dx^2\big|_{i=0}=\frac{u_1-2u_0+u_0}{\Delta x^2}=\frac{u_1-u_0}{\Delta x^2}
+\]
+\end{alertblock}
+
+\begin{alertblock}{Initial Conditions}
+\begin{align*}
+    u_0(x)&=\exp\!\Big(-\frac{(x-\mu)^2}{2\sigma^2}\Big)\\
+    u_0(x)&=\mathbf{1}_{[a,b]}(x) \\
+    u_0(x)&=\tfrac12\big(1+\sin(2\pi k\,x/x_{\max}+\varphi)\big) \\
+    \tilde u(x)&\sim\text{Unif}(0,1)
+\end{align*}
 
 \end{alertblock}
 
+
 \end{secframe}
+
+% ===== Slide 3 =====
+\begin{secframe}
+\small
+% \textcolor{red_unipd}{\Large Dataset Preparation}
+
+\centering
+\begin{minipage}[b]{0.80\linewidth}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/initial/gauss.png}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/initial/box.png}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/initial/sine.png}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/initial/random.png}
+\end{minipage}
+
+\end{secframe}
+
+
+% ===== Slide 4 =====
+\begin{secframe}
+\small
+\textcolor{red_unipd}{\Large Numerical Simulation}
+\vspace{0.6em}
+
+\centering
+\begin{minipage}[b]{0.80\linewidth}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/init.png}
+    \includegraphics[width=\linewidth,keepaspectratio]{images/1DThemal/diffusion.png}
+\end{minipage}
+
+\end{secframe}
+
+
+% ===== Slide 5 =====
+
